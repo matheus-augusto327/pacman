@@ -1,0 +1,237 @@
+[gd_scene load_steps=16 format=1]
+
+[ext_resource path="res://Assets/Tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Scripts/Tilemap.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Pacman.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Ghost.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/GhostRed.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/GhostBlue.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/GhostPink.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/GhostOrange.gd" type="Script" id=8]
+[ext_resource path="res://Assets/botoes/g5412.png" type="Texture" id=9]
+[ext_resource path="res://Assets/botoes/g5408.png" type="Texture" id=10]
+[ext_resource path="res://Assets/botoes/g5404.png" type="Texture" id=11]
+[ext_resource path="res://Assets/botoes/g5400.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/Hud.gd" type="Script" id=13]
+[ext_resource path="res://Assets/kenpixel.ttf" type="DynamicFontData" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+
+font/size = 30
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 14 )
+
+[node name="Game" type="Node"]
+
+[node name="Board" type="Node2D" parent="."]
+
+transform/pos = Vector2( 9.08829, 95.8172 )
+transform/scale = Vector2( 1.15, 1.15 )
+
+[node name="TileMap" type="TileMap" parent="Board"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 32, 32 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 65536, 0, 65537, 1, 65538, 1, 65539, 1, 65540, 1, 65541, 1, 65542, 1, 65543, 1, 65544, 1, 65545, 0, 65546, 1, 65547, 1, 65548, 1, 65549, 1, 65550, 1, 65551, 1, 65552, 1, 65553, 1, 65554, 0, 131072, 0, 131073, 2, 131074, 0, 131075, 0, 131076, 1, 131077, 0, 131078, 0, 131079, 0, 131080, 1, 131081, 0, 131082, 1, 131083, 0, 131084, 0, 131085, 0, 131086, 1, 131087, 0, 131088, 0, 131089, 2, 131090, 0, 196608, 0, 196609, 1, 196610, 1, 196611, 1, 196612, 1, 196613, 1, 196614, 1, 196615, 1, 196616, 1, 196617, 1, 196618, 1, 196619, 1, 196620, 1, 196621, 1, 196622, 1, 196623, 1, 196624, 1, 196625, 1, 196626, 0, 262144, 0, 262145, 1, 262146, 0, 262147, 0, 262148, 1, 262149, 0, 262150, 1, 262151, 0, 262152, 0, 262153, 0, 262154, 0, 262155, 0, 262156, 1, 262157, 0, 262158, 1, 262159, 0, 262160, 0, 262161, 1, 262162, 0, 327680, 0, 327681, 1, 327682, 1, 327683, 1, 327684, 1, 327685, 0, 327686, 1, 327687, 1, 327688, 1, 327689, 0, 327690, 1, 327691, 1, 327692, 1, 327693, 0, 327694, 1, 327695, 1, 327696, 1, 327697, 1, 327698, 0, 393216, 0, 393217, 0, 393218, 0, 393219, 0, 393220, 1, 393221, 0, 393222, 0, 393223, 0, 393225, 0, 393227, 0, 393228, 0, 393229, 0, 393230, 1, 393231, 0, 393232, 0, 393233, 0, 393234, 0, 458756, 1, 458757, 0, 458765, 0, 458766, 1, 458767, 0, 524288, 0, 524289, 0, 524290, 0, 524291, 0, 524292, 1, 524293, 0, 524295, 0, 524296, 0, 524298, 0, 524299, 0, 524301, 0, 524302, 1, 524303, 0, 524304, 0, 524305, 0, 524306, 0, 589828, 1, 589831, 0, 589835, 0, 589838, 1, 655360, 0, 655361, 0, 655362, 0, 655363, 0, 655364, 1, 655365, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655373, 0, 655374, 1, 655375, 0, 655376, 0, 655377, 0, 655378, 0, 720899, 0, 720900, 1, 720901, 0, 720909, 0, 720910, 1, 720911, 0, 786432, 0, 786433, 0, 786434, 0, 786435, 0, 786436, 1, 786437, 0, 786439, 0, 786440, 0, 786441, 0, 786442, 0, 786443, 0, 786445, 0, 786446, 1, 786447, 0, 786448, 0, 786449, 0, 786450, 0, 851968, 0, 851969, 1, 851970, 1, 851971, 1, 851972, 1, 851973, 1, 851974, 1, 851975, 1, 851976, 1, 851977, 0, 851978, 1, 851979, 1, 851980, 1, 851981, 1, 851982, 1, 851983, 1, 851984, 1, 851985, 1, 851986, 0, 917504, 0, 917505, 1, 917506, 0, 917507, 0, 917508, 1, 917509, 0, 917510, 0, 917511, 0, 917512, 1, 917513, 0, 917514, 1, 917515, 0, 917516, 0, 917517, 0, 917518, 1, 917519, 0, 917520, 0, 917521, 1, 917522, 0, 983040, 0, 983041, 2, 983042, 1, 983043, 0, 983044, 1, 983045, 1, 983046, 1, 983047, 1, 983048, 1, 983049, 1, 983050, 1, 983051, 1, 983052, 1, 983053, 1, 983054, 1, 983055, 0, 983056, 1, 983057, 2, 983058, 0, 1048576, 0, 1048577, 0, 1048578, 1, 1048579, 0, 1048580, 1, 1048581, 0, 1048582, 1, 1048583, 0, 1048584, 0, 1048585, 0, 1048586, 0, 1048587, 0, 1048588, 1, 1048589, 0, 1048590, 1, 1048591, 0, 1048592, 1, 1048593, 0, 1048594, 0, 1114112, 0, 1114113, 1, 1114114, 1, 1114115, 1, 1114116, 1, 1114117, 0, 1114118, 1, 1114119, 1, 1114120, 1, 1114121, 0, 1114122, 1, 1114123, 1, 1114124, 1, 1114125, 0, 1114126, 1, 1114127, 1, 1114128, 1, 1114129, 1, 1114130, 0, 1179648, 0, 1179649, 1, 1179650, 0, 1179651, 0, 1179652, 0, 1179653, 0, 1179654, 0, 1179655, 0, 1179656, 1, 1179657, 0, 1179658, 1, 1179659, 0, 1179660, 0, 1179661, 0, 1179662, 0, 1179663, 0, 1179664, 0, 1179665, 1, 1179666, 0, 1245184, 0, 1245185, 1, 1245186, 1, 1245187, 1, 1245188, 1, 1245189, 1, 1245190, 1, 1245191, 1, 1245192, 1, 1245193, 1, 1245194, 1, 1245195, 1, 1245196, 1, 1245197, 1, 1245198, 1, 1245199, 1, 1245200, 1, 1245201, 1, 1245202, 0, 1310720, 0, 1310721, 0, 1310722, 0, 1310723, 0, 1310724, 0, 1310725, 0, 1310726, 0, 1310727, 0, 1310728, 0, 1310729, 0, 1310730, 0, 1310731, 0, 1310732, 0, 1310733, 0, 1310734, 0, 1310735, 0, 1310736, 0, 1310737, 0, 1310738, 0 )
+script/script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Pacman" parent="Board" instance=ExtResource( 3 )]
+
+frame = 0
+
+[node name="GhostRed" parent="Board" instance=ExtResource( 4 )]
+
+animation = "red"
+script/script = ExtResource( 5 )
+iniposdisc = Vector2( 9, 7 )
+color = "red"
+
+[node name="GhostBlue" parent="Board" instance=ExtResource( 4 )]
+
+animation = "red"
+script/script = ExtResource( 6 )
+iniposdisc = Vector2( 10, 9 )
+color = "blue"
+points = 1000
+
+[node name="GhostPink" parent="Board" instance=ExtResource( 4 )]
+
+animation = "red"
+script/script = ExtResource( 7 )
+iniposdisc = Vector2( 8, 9 )
+color = "pink"
+points = 500
+
+[node name="GhostOrange" parent="Board" instance=ExtResource( 4 )]
+
+animation = "red"
+script/script = ExtResource( 8 )
+iniposdisc = Vector2( 9, 9 )
+color = "orange"
+points = 200
+
+[node name="Controls" type="Node2D" parent="."]
+
+editor/display_folded = true
+
+[node name="Up" type="TouchScreenButton" parent="Controls"]
+
+transform/pos = Vector2( 301, 900 )
+normal = ExtResource( 9 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "up"
+visibility_mode = 0
+
+[node name="Down" type="TouchScreenButton" parent="Controls"]
+
+transform/pos = Vector2( 302, 1136 )
+normal = ExtResource( 10 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "down"
+visibility_mode = 0
+
+[node name="Left" type="TouchScreenButton" parent="Controls"]
+
+transform/pos = Vector2( 183, 1018 )
+normal = ExtResource( 11 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "left"
+visibility_mode = 0
+
+[node name="Right" type="TouchScreenButton" parent="Controls"]
+
+transform/pos = Vector2( 419, 1018 )
+normal = ExtResource( 12 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "right"
+visibility_mode = 0
+
+[node name="Hud" type="Control" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 5.0
+margin/right = 40.0
+margin/bottom = 45.0
+script/script = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="Hud"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 721.0
+margin/bottom = 46.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "HIGH SCORE"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="High" type="Label" parent="Hud"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 41.0
+margin/right = 721.0
+margin/bottom = 87.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label1" type="Label" parent="Hud"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 257.0
+margin/bottom = 46.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "1UP"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Score" type="Label" parent="Hud"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 41.0
+margin/right = 257.0
+margin/bottom = 87.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "0"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="pac" from="Board/Pacman" to="Board/GhostRed" method="_on_Pacman_pac"]
+
+[connection signal="pac" from="Board/Pacman" to="Board/GhostBlue" method="_on_Pacman_pac"]
+
+[connection signal="pac" from="Board/Pacman" to="Board/GhostPink" method="_on_Pacman_pac"]
+
+[connection signal="pac" from="Board/Pacman" to="Board/GhostOrange" method="_on_Pacman_pac"]
+
+
